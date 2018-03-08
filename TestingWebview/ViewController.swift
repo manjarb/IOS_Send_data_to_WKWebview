@@ -41,34 +41,6 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    //MARK:- WKNavigationDelegate
-
-    
-    func webView(webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: NSError) {
-        print(error.localizedDescription)
-    }
-    func webView(webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        print("Strat to load")
-    }
-    func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
-        print("finish to load eaoe")
-        // self.evaluateJavaScriptForData(dictionaryData: ["randomshit": "randomshit" as AnyObject])
-    
-    }
-    
-    func evaluateJavaScriptForData(dictionaryData: [String: AnyObject]) {
-        // Convert swift dictionary into encoded json
-        let serializedData = try! JSONSerialization.data(withJSONObject: dictionaryData, options: .prettyPrinted)
-        let encodedData = serializedData.base64EncodedData(options: .endLineWithCarriageReturn)
-    
-        self.webView.evaluateJavaScript("reloadData('\(encodedData)')", completionHandler: { result, error in
-            print("Completed Javascript evaluation.")
-            print("Result: \(result)")
-            print("Error: \(error)")
-        })
-    }
-    
 
 }
 
